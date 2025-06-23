@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Weather {
   final String cityName;
   final String weatherDescription;
@@ -31,8 +29,9 @@ class Weather {
   String get conditionKeyword {
     final desc = weatherDescription.toLowerCase();
     if (desc.contains("rain")) return "rainy";
-    if (desc.contains("thunder") || desc.contains("storm"))
+    if (desc.contains("thunder") || desc.contains("storm")) {
       return "thunderstorm";
+    }
     if (desc.contains("cloud")) return "cloudy";
     return "sunny";
   }
