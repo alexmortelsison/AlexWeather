@@ -37,33 +37,36 @@ class _WeatherPageState extends State<WeatherPage> {
             colors: [Colors.blue.shade400, Colors.blue.shade200],
           ),
         ),
-        child: Column(
-          children: [
-            FutureBuilder(
-              future: weatherFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator.adaptive());
-                } else if (snapshot.hasError) {
-                  return Center(
-                    child: Text("Error:${snapshot.error}"),
-                  );
-                } else if (snapshot.hasData) {
-                  final weather = snapshot.data;
-                  return MainCard(
-                    cityName: weather!.cityName,
-                    temperature: "${weather.temperature}",
-                    weatherIcon: weather.weatherIconPath,
-                    weatherDescription: weather.weatherDescription,
-                  );
-                } else {
-                  return Center(
-                    child: Text("No data available."),
-                  );
-                }
-              },
-            ),
-          ],
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FutureBuilder(
+                future: weatherFuture,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator.adaptive());
+                  } else if (snapshot.hasError) {
+                    return Center(
+                      child: Text("Error:${snapshot.error}"),
+                    );
+                  } else if (snapshot.hasData) {
+                    final weather = snapshot.data;
+                    return MainCard(
+                      cityName: weather!.cityName,
+                      temperature: "${weather.temperature}",
+                      weatherIcon: weather.weatherIconPath,
+                      weatherDescription: weather.weatherDescription,
+                    );
+                  } else {
+                    return Center(
+                      child: Text("No data available."),
+                    );
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

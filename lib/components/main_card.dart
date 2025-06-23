@@ -19,7 +19,7 @@ class MainCard extends StatelessWidget {
     return Column(
       children: [
         Text(cityName),
-        Text(temperature),
+        Text("$temperature°C"),
         Lottie.asset(weatherIcon),
         Text(weatherDescription),
       ],
