@@ -21,7 +21,7 @@ class WeatherService {
     }
 
     Position position = await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high,
+      desiredAccuracy: LocationAccuracy.best,
     );
 
     final lat = position.latitude;

@@ -78,7 +78,7 @@ class _WeatherPageState extends State<WeatherPage> {
                                 description: "${weather.pressure} P",
                               ),
                               InfoCard(
-                                text: "WindS Speed",
+                                text: "Wind Speed",
                                 icon: WeatherIcons.windy,
                                 description: "${weather.windSpeed} m/h",
                               ),
