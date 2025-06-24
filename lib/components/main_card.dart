@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:recase/recase.dart';
 
 class MainCard extends StatelessWidget {
   final String cityName;
@@ -14,14 +15,25 @@ class MainCard extends StatelessWidget {
     required this.weatherDescription,
   });
 
+  String get capitalizedWord => weatherDescription.titleCase;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(cityName),
-        Text("$temperature°C"),
+        Text(
+          cityName,
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
+        Text(
+          "$temperature°C",
+          style: TextStyle(fontSize: 20),
+        ),
         Lottie.asset(weatherIcon),
-        Text(weatherDescription),
+        Text(
+          capitalizedWord,
+          style: TextStyle(fontSize: 20),
+        ),
       ],
     );
   }
