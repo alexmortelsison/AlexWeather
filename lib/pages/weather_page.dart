@@ -1,7 +1,9 @@
+import 'package:alexweather/components/info_card.dart';
 import 'package:alexweather/components/main_card.dart';
 import 'package:alexweather/models/weather.dart';
 import 'package:alexweather/services/weather_service.dart';
 import 'package:flutter/material.dart';
+import 'package:weather_icons/weather_icons.dart';
 
 class WeatherPage extends StatefulWidget {
   const WeatherPage({super.key});
@@ -52,11 +54,38 @@ class _WeatherPageState extends State<WeatherPage> {
                     );
                   } else if (snapshot.hasData) {
                     final weather = snapshot.data;
-                    return MainCard(
-                      cityName: weather!.cityName,
-                      temperature: "${weather.temperature}",
-                      weatherIcon: weather.weatherIconPath,
-                      weatherDescription: weather.weatherDescription,
+                    return Column(
+                      children: [
+                        MainCard(
+                          cityName: weather!.cityName,
+                          temperature: "${weather.temperature}",
+                          weatherIcon: weather.weatherIconPath,
+                          weatherDescription: weather.weatherDescription,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 48),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              InfoCard(
+                                text: "Humidity",
+                                icon: Icons.water_drop,
+                                description: "${weather.humidity} RH",
+                              ),
+                              InfoCard(
+                                text: "Pressure",
+                                icon: WeatherIcons.strong_wind,
+                                description: "${weather.pressure} P",
+                              ),
+                              InfoCard(
+                                text: "WindS Speed",
+                                icon: WeatherIcons.windy,
+                                description: "${weather.windSpeed} m/h",
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     );
                   } else {
                     return Center(

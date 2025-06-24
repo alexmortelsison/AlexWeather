@@ -30,9 +30,12 @@ class MainCard extends StatelessWidget {
           style: TextStyle(fontSize: 20),
         ),
         Lottie.asset(weatherIcon),
-        Text(
-          capitalizedWord,
-          style: TextStyle(fontSize: 20),
+        Padding(
+          padding: const EdgeInsets.only(top: 16),
+          child: Text(
+            capitalizedWord,
+            style: TextStyle(fontSize: 20),
+          ),
         ),
       ],
     );
